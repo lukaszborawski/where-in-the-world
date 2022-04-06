@@ -1,12 +1,16 @@
-import styled from 'styled-components'
-import moonIcon from '../assets/icons/moon.svg'
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import moonIcon from '../assets/icons/moon.svg';
+import { ThemeContext } from '../providers/ThemeProvider';
 
 const Header = () => {
+  const { toggleTheme } = useContext(ThemeContext);
+
   return (
     <Wrapper>
       <ContentWrapper>
         <Title>Where in the world?</Title>
-        <DarkModeButton>
+        <DarkModeButton onClick={toggleTheme}>
           <Icon />
           <ButtonText>Dark Mode</ButtonText>
         </DarkModeButton>
@@ -26,6 +30,7 @@ const Wrapper = styled.header`
   box-shadow: 0 2px 8px -5px;
   display: flex;
   align-items: center;
+  background-color: ${({ theme }) => theme.background};
 `;
 
 const ContentWrapper = styled.div`
@@ -38,6 +43,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled.h1`
+  color: ${({ theme }) => theme.text};
 `;
 
 const DarkModeButton = styled.button`
@@ -54,9 +60,10 @@ const Icon = styled.i`
   display: block;
   width: 20px;
   height: 20px;
-  background: url(${moonIcon}) no-repeat center;
+  background: url(${moonIcon});
 `;
 
 const ButtonText = styled.h3`
    margin-left: 5px;
+   color: ${({ theme }) => theme.text};
 `;
