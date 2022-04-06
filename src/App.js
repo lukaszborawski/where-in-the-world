@@ -1,12 +1,15 @@
 import GlobalStyle from './assets/styles/GlobalStyle';
 import './assets/styles/fonts.css';
-import Header from './components/Header'
+import Header from './components/Header';
+import ThemeProvider from './providers/ThemeProvider';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Header></Header>
+      <ThemeProvider>
+        <GlobalStyle />
+        <Header></Header>
+      </ThemeProvider>
     </>
   );
 }
