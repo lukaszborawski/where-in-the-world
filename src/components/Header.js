@@ -40,10 +40,15 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 18px;
 `;
 
 const Title = styled.h1`
+  font-size: 16px;
   color: ${({ theme }) => theme.text};
+  ${({ theme }) => theme.laptop} {
+    font-size: 24px;
+  }
 `;
 
 const DarkModeButton = styled.button`
@@ -64,6 +69,11 @@ const Icon = styled.i`
 `;
 
 const ButtonText = styled.h3`
+    font-size: 15px;
+   font-weight: 300;
    margin-left: 5px;
    color: ${({ theme }) => theme.text};
+   ${({ theme }) => theme.laptop} {
+    font-size: 18px;
+  }
 `;
