@@ -66,10 +66,11 @@ const Icon = styled.i`
   width: 20px;
   height: 20px;
   background: url(${moonIcon});
+  filter: ${({ theme }) => (theme.isDark ? 'invert(1)' : 'invert(0)')};
 `;
 
 const ButtonText = styled.h3`
-    font-size: 15px;
+   font-size: 15px;
    font-weight: 300;
    margin-left: 5px;
    color: ${({ theme }) => theme.text};
