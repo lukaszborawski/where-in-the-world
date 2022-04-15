@@ -11,8 +11,7 @@ const CountriesProvider = ({ children }) => {
       .get('https://restcountries.com/v2/all')
       .then(response => {
         setCountries(response.data)
-      }
-      );
+      });
   }, []);
 
   return (
