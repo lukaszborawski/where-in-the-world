@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CountriesContext } from '../providers/CountriesProvider'
+import styled from 'styled-components'
+import Card from '../components/CountryCard';
 
 const Countries = () => {
+
+  const { countries } = useContext(CountriesContext);
+
   return (
-    <div>Countries</div>
+    <Wrapper>
+      {countries.map(
+        ({ name, flag, population, region, capital }) => (
+          <Card
+            key={name}
+            flag={flag}
+            countryName={name}
+            population={population}
+            region={region}
+            capital={capital}
+          />
+        )
+      )}
+    </Wrapper>
   )
 }
 
 export default Countries;
+
+const Wrapper = styled.main`
+  padding: 100px 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  gap: 50px;
+  
+`;
