@@ -9,6 +9,20 @@ const CountryCard = ({ countryName, flag, population, region, capital }) => {
         <Image src={flag} alt={countryName} />
         <Content>
           <Title>{countryName}</Title>
+          <Detail>
+            Population:
+            <Value>
+              {population.toLocaleString()}
+            </Value>
+          </Detail>
+          <Detail>
+            Region:<Value>{region}</Value>
+          </Detail>
+          {capital && (
+            <Detail>
+              Capital:<Value>{capital}</Value>
+            </Detail>
+          )}
         </Content>
       </Wrapper>
     </Link >
@@ -18,8 +32,8 @@ const CountryCard = ({ countryName, flag, population, region, capital }) => {
 export default CountryCard;
 
 const Wrapper = styled.div`
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   width: 320px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
 `;
 
 const Image = styled.img`
@@ -30,8 +44,21 @@ const Image = styled.img`
 `;
 
 const Content = styled.div`
+  padding: 26px 20px;
   color: black;
 `;
 
 const Title = styled.h3`
+  margin-bottom: 26px;
+  font-size: 20px;
+`;
+
+const Detail = styled.div`
+  margin-bottom: 5px;
+  font-weight: 600;
+`;
+
+const Value = styled.span`
+  margin-left: 7px;
+  font-weight: 400;
 `;

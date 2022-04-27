@@ -69,7 +69,7 @@ const Icon = styled.i`
   filter: ${({ theme }) => (theme.isDark ? 'invert(1)' : 'invert(0)')};
 `;
 
-const ButtonText = styled.h3`
+const ButtonText = styled.h2`
    font-size: 15px;
    font-weight: 300;
    margin-left: 5px;
