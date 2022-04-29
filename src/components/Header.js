@@ -61,7 +61,7 @@ const DarkModeButton = styled.button`
   cursor: pointer;
 `;
 
-const Icon = styled.i`
+const Icon = styled.div`
   display: block;
   width: 20px;
   height: 20px;

@@ -14,7 +14,7 @@ const Countries = () => {
           <Card
             key={name}
             flag={flag}
-            countryName={name}
+            name={name}
             population={population}
             region={region}
             capital={capital}
