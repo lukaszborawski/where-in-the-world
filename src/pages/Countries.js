@@ -10,7 +10,7 @@ const Countries = () => {
   return (
     <Wrapper>
       {countries.map(
-        ({ name, flag, population, region, capital }) => (
+        ({ name, flag, population, region, capital, alpha3Code }) => (
           <Card
             key={name}
             flag={flag}
@@ -18,6 +18,7 @@ const Countries = () => {
             population={population}
             region={region}
             capital={capital}
+            alpha3Code={alpha3Code}
           />
         )
       )}

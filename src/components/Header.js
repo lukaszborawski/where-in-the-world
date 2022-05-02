@@ -31,6 +31,7 @@ const Wrapper = styled.header`
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.background};
+  z-index: 2;
 `;
 
 const ContentWrapper = styled.div`

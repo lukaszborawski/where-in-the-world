@@ -12,10 +12,10 @@ const CountryDetail = () => {
   const { countries } = useContext(CountriesContext);
 
   let country = countries.find(item => {
-    return item.name === id;
+    return item.alpha3Code === id;
   });
 
-  const { name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, flag } = country;
+  const { name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, flag, borders } = country;
 
   return (
     <Wrapper>
@@ -81,6 +81,24 @@ const CountryDetail = () => {
                 </Value>
               </Detail>
             )}
+            {borders && (
+              <Detail>
+                Borders:
+                <div>
+                  {borders.map(
+                    (item) => {
+                      let bordersCountry = countries.find(border => {
+                        return border.alpha3Code === item;
+                      });
+                      return (
+                        <BorderButton to={`/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
+                      )
+                    }
+
+                  )}
+                </div>
+              </Detail>
+            )}
           </InnerWrapper>
         </Content>
       </CountryWrapper>
@@ -103,6 +121,13 @@ const BackButton = styled(Link)`
   color: ${({ theme }) => theme.text};
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+`;
+
+const BorderButton = styled(Link)`
+  display: flex;
+  background: ${({ theme }) => theme.element};
+  color: ${({ theme }) => theme.text};
+
 `;
 
 const Icon = styled.div`

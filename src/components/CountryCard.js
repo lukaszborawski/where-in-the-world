@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
-const CountryCard = ({ name, flag, population, region, capital }) => {
+const CountryCard = ({ name, flag, population, region, capital, alpha3Code }) => {
   return (
-    <Link to={`country/${name}`}>
+    <Link to={`country/${alpha3Code}`}>
       <Wrapper>
         <Image src={flag} alt={name} />
         <Content>
