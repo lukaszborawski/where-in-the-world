@@ -27,27 +27,38 @@ const CountryDetail = () => {
         <Image src={flag} alt={name} />
         <Content>
           <Title>{name}</Title>
-          <Detail>
-            Native Name:
-            <Value>
-              {nativeName}
-            </Value>
-          </Detail>
-          <Detail>
-            Population:
-            <Value>
-              {population.toLocaleString()}
-            </Value>
-          </Detail>
-          <Detail>
-            Region:<Value>{region}</Value>
-          </Detail>
-          <Detail>
-            Sub Region:
-            <Value>
-              {subregion}
-            </Value>
-          </Detail>
+          {nativeName && (
+            <Detail>
+              Native Name:
+              <Value>
+                {nativeName}
+              </Value>
+            </Detail>
+          )}
+          {population && (
+            <Detail>
+              Population:
+              <Value>
+                {population.toLocaleString()}
+              </Value>
+            </Detail>
+          )}
+          {region && (
+            <Detail>
+              Region:
+              <Value>
+                {region}
+              </Value>
+            </Detail>
+          )}
+          {subregion && (
+            <Detail>
+              Sub Region:
+              <Value>
+                {subregion}
+              </Value>
+            </Detail>
+          )}
           {capital && (
             <Detail>
               Capital:
@@ -81,25 +92,23 @@ const CountryDetail = () => {
                 </Value>
               </Detail>
             )}
-            {borders && (
-              <Detail>
-                Borders:
-                <div>
-                  {borders.map(
-                    (item) => {
-                      let bordersCountry = countries.find(border => {
-                        return border.alpha3Code === item;
-                      });
-                      return (
-                        <BorderButton to={`/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
-                      )
-                    }
-
-                  )}
-                </div>
-              </Detail>
-            )}
           </InnerWrapper>
+          {borders && (
+            <Detail>
+              Border Countries::
+              <Borders>
+                {borders.map((item) => {
+                  let bordersCountry = countries.find(border => {
+                    return border.alpha3Code === item;
+                  });
+                  return (
+                    <BorderButton to={`/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
+                  )
+                }
+                )}
+              </Borders>
+            </Detail>
+          )}
         </Content>
       </CountryWrapper>
     </Wrapper>
@@ -113,25 +122,15 @@ const Wrapper = styled.main`
 `;
 
 const BackButton = styled(Link)`
-  display: flex;
-  width: 120px;
-  padding: 8px 0px;
-  justify-content: center;
+  display: inline-flex;
+  padding: 8px 30px;
   background: ${({ theme }) => theme.element};
   color: ${({ theme }) => theme.text};
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 `;
 
-const BorderButton = styled(Link)`
-  display: flex;
-  background: ${({ theme }) => theme.element};
-  color: ${({ theme }) => theme.text};
-
-`;
-
 const Icon = styled.div`
-  display: block;
   width: 20px;
   height: 20px;
   margin-right: 10px;
@@ -172,4 +171,20 @@ const Detail = styled.div`
 const Value = styled.span`
   margin-left: 7px;
   font-weight: 400;
+`;
+
+const BorderButton = styled(Link)`
+  padding: 5px 5px;
+  background: ${({ theme }) => theme.element};
+  color: ${({ theme }) => theme.text};
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  font-weight: 400;
+`;
+
+const Borders = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
 `;

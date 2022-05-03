@@ -63,7 +63,6 @@ const DarkModeButton = styled.button`
 `;
 
 const Icon = styled.div`
-  display: block;
   width: 20px;
   height: 20px;
   background: url(${moonIcon});
