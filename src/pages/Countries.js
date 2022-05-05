@@ -29,10 +29,10 @@ const Countries = () => {
 export default Countries;
 
 const Wrapper = styled.main`
-  padding: 100px 0 0 0;
+  padding: 100px 20px 0 20px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-items: center;
   gap: 50px;
-  
+  background-color: ${({ theme }) => theme.background};
 `;

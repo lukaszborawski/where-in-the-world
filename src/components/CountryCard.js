@@ -33,7 +33,9 @@ export default CountryCard;
 
 const Wrapper = styled.div`
   width: 320px;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+  background-color: ${({ theme }) => theme.element};
+  color: ${({ theme }) => theme.text};
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.2);
 `;
 
 const Image = styled.img`
@@ -45,7 +47,6 @@ const Image = styled.img`
 
 const Content = styled.div`
   padding: 26px 20px;
-  color: black;
 `;
 
 const Title = styled.h3`

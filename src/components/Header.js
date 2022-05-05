@@ -27,10 +27,10 @@ const Wrapper = styled.header`
   right: 0;
   left: 0;
   height: 80px;
-  box-shadow: 0 2px 8px -5px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.element};
   z-index: 2;
 `;
 

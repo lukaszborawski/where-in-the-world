@@ -119,6 +119,7 @@ export default CountryDetail;
 
 const Wrapper = styled.main`
   padding: 100px 20px 0 20px;
+  background-color: ${({ theme }) => theme.background};
 `;
 
 const BackButton = styled(Link)`
@@ -151,7 +152,7 @@ const Image = styled.img`
 
 const Content = styled.div`
   padding: 26px 20px;
-  color: black;
+  color: ${({ theme }) => theme.text};
 `;
 
 const InnerWrapper = styled.div`
