@@ -1,6 +1,7 @@
 const breakpoints = {
-  tablet: `@media (min-width: 768px)`,
-  laptop: `@media (min-width: 1024px)`,
+  md: `@media (min-width: 768px)`,
+  lg: `@media (min-width: 860px)`,
+  xl: `@media (min-width: 1200px)`,
 };
 
 export const lightTheme = {

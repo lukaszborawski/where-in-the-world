@@ -29,10 +29,13 @@ const Countries = () => {
 export default Countries;
 
 const Wrapper = styled.main`
-  padding: 100px 20px 0 20px;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  justify-items: center;
-  gap: 50px;
+  padding: 120px 20px 0 20px;
+  margin: 0 auto;
+  max-width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
   background-color: ${({ theme }) => theme.background};
 `;
