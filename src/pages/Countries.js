@@ -6,7 +6,7 @@ import Loader from '../components/Loader';
 
 const Countries = () => {
 
-  const { countries, isLoading} = useContext(CountriesContext);
+  const { countries, isLoading } = useContext(CountriesContext);
 
   return (
     <Wrapper>

@@ -2,35 +2,33 @@ import React from 'react';
 import styled from 'styled-components'
 import { motion } from 'framer-motion';
 
-const loaderVariants = {
-  animationOne: {
-    x: [-50, 50, 0],
-    transition: {
-      x: {
-        repeat: Infinity,
-        duration: 0.5,
-      },
-    }
-  }
-};
-
 const Loader = () => {
   return (
     <>
-      <BouncingBall
-        variants={loaderVariants}
-        animate="animationOne"
-      ></BouncingBall>
+      <Wrapper>
+        <CircleLoader
+          animate={{ rotate: [0, 180, 360], borderWidth: [8, 2, 8] }}
+          transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+        ></CircleLoader>
+      </Wrapper>
     </>
   )
 }
 
 export default Loader;
 
-const BouncingBall = styled(motion.div)`
-  width: 10px;
-  height: 10px;
-  margin: 40px auto;
+const Wrapper = styled.div`
+  position: relative;
+  width: 100px;
+  height: 100px;
+`;
+
+const CircleLoader = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 8px solid transparent;
+  border-top-color: ${({ theme }) => theme.text};
+  border-bottom-color: ${({ theme }) => theme.text};
   border-radius: 50%;
-  background: ${({ theme }) => (theme.isDark ? "white" : "black")};
 `;
