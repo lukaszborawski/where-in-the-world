@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link, useParams } from 'react-router-dom'
 import { CountriesContext } from '../providers/CountriesProvider'
 import arrowIcon from '../assets/icons/arrow-back.svg'
+import { motion } from 'framer-motion'
 
 
 
@@ -18,7 +19,11 @@ const CountryDetail = () => {
   const { name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, flag, borders } = country;
 
   return (
-    <Wrapper>
+    <Wrapper
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <BackButton to="/">
         <Icon />
         Back
@@ -123,7 +128,7 @@ const CountryDetail = () => {
 
 export default CountryDetail;
 
-const Wrapper = styled.main`
+const Wrapper = styled(motion.main)`
   padding: 120px 20px 0 20px;
   background-color: ${({ theme }) => theme.background};
 `;
