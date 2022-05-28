@@ -16,8 +16,13 @@ const CountriesProvider = ({ children }) => {
       .finally(() => setIsLoading(false));
   }, []);
 
+  const [country, setCountry] = useState('');
+  const handleSearchChange = (e) => {
+    setCountry(e.target.value)
+  }
+
   return (
-    <CountriesContext.Provider value={{ countries, isLoading }}>
+    <CountriesContext.Provider value={{ countries, isLoading, country, handleSearchChange }}>
       {children}
     </CountriesContext.Provider>
   )
