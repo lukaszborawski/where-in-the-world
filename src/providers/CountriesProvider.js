@@ -6,6 +6,8 @@ export const CountriesContext = createContext();
 const CountriesProvider = ({ children }) => {
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
 
   useEffect(() => {
     axios
@@ -16,13 +18,12 @@ const CountriesProvider = ({ children }) => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const [country, setCountry] = useState('');
   const handleSearchChange = (e) => {
     setCountry(e.target.value)
   }
 
   return (
-    <CountriesContext.Provider value={{ countries, isLoading, country, handleSearchChange }}>
+    <CountriesContext.Provider value={{ countries, isLoading, country, region, setRegion, handleSearchChange }}>
       {children}
     </CountriesContext.Provider>
   )

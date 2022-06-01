@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link, useParams } from 'react-router-dom'
 import { CountriesContext } from '../providers/CountriesProvider'
-import arrowIcon from '../assets/icons/arrow-back.svg'
+import arrowBackIcon from '../assets/icons/arrow-back.svg'
 import { motion } from 'framer-motion'
 
 
@@ -146,7 +146,7 @@ const Icon = styled.div`
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  background: url(${arrowIcon});
+  background: url(${arrowBackIcon}) no-repeat center;
   filter: ${({ theme }) => (theme.isDark ? 'invert(1)' : 'invert(0)')};
 `;
 

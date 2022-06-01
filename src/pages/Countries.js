@@ -5,10 +5,15 @@ import Card from '../components/CountryCard';
 import Loader from '../components/Loader';
 import { motion } from 'framer-motion';
 import SearchBar from '../components/SearchBar';
+import CustomDropdown from '../components/CustomDropdown';
 
 const Countries = () => {
 
-  const { countries, isLoading } = useContext(CountriesContext);
+  const { countries, country, region, isLoading } = useContext(CountriesContext);
+
+  const filtredCountries = countries
+    .filter(countrySelect => countrySelect.region.includes(region))
+    .filter(countrySearch => countrySearch.name.toLowerCase().includes(country.toLowerCase()))
 
   return (
     <Wrapper
@@ -17,12 +22,12 @@ const Countries = () => {
       exit={{ opacity: 0 }}
     >
       <FiltersWrapper>
-        {/* <Filters /> */}
         <SearchBar />
+        <CustomDropdown />
       </FiltersWrapper>
       <CountriesWrapper>
         {!isLoading ?
-          countries.map(
+          filtredCountries.map(
             ({ name, flag, population, region, capital, alpha3Code }) => (
               <Card
                 key={name}

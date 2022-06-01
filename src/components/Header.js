@@ -65,7 +65,7 @@ const DarkModeButton = styled.button`
 const Icon = styled.div`
   width: 20px;
   height: 20px;
-  background: url(${moonIcon});
+  background: url(${moonIcon}) no-repeat center;
   filter: ${({ theme }) => (theme.isDark ? 'invert(1)' : 'invert(0)')};
 `;
 
