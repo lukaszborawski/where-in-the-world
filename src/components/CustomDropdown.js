@@ -1,35 +1,45 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { CountriesContext } from '../providers/CountriesProvider'
 import styled from 'styled-components'
 import arrowDownIcon from '../assets/icons/arrow-down.svg'
 
 
-const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Polar'];
 
 const CustomDropdown = () => {
 
-  const { setRegion } = useContext(CountriesContext);
+  const { region, setRegion } = useContext(CountriesContext);
 
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <DropdownContainer>
-      <DropdownHeader>
-        <RegionName>Filter by Region</RegionName>
+      <DropdownHeader onClick={() => setIsOpen(!isOpen)}>
+        <RegionName>{region || 'Filter by region'}</RegionName>
         <Icon />
       </DropdownHeader>
-      <DropdownListContainer>
-        <DropdownList>
-          {regions.map(region => (
-            <ListItem
-              onClick={() => {
-                setRegion(region);
-              }}
-              key={region}>
-              {region}
+      {isOpen && (
+        <DropdownListContainer>
+          <DropdownList>
+            {regions.map(region => (
+              <ListItem
+                onClick={() => {
+                  setRegion(region)
+                  setIsOpen(false)
+                }}
+                key={region}>
+                {region}
+              </ListItem>
+            ))}
+            <ListItem onClick={() => {
+              setRegion("")
+              setIsOpen(false)
+            }}>
+              All
             </ListItem>
-          ))}
-        </DropdownList>
-      </DropdownListContainer>
+          </DropdownList>
+        </DropdownListContainer>
+      )}
     </DropdownContainer>
   )
 }
@@ -68,6 +78,7 @@ const DropdownListContainer = styled.div`
   width: 300px;
   margin-top: 10px;
   position: absolute;
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.8);
 `;
 const DropdownList = styled.ul`
   border-radius: 8px;
