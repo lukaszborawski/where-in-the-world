@@ -22,12 +22,10 @@ const InputWrapper = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.element};
   max-width: 600px;
-  padding: 10px 20px;
+  padding: 15px 15px;
   border-radius: 8px;
   width: 100%;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.25);
-  border: 2px solid;
-  border-color: transparent;
 `;
 
 const Icon = styled.div`
@@ -39,7 +37,7 @@ const Icon = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  line-height: 30px;
+  line-height: 25px;
   margin-left: 20px;
   border-color: transparent;
   color: ${({ theme }) => theme.text};

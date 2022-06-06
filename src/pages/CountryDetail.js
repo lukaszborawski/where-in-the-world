@@ -152,10 +152,12 @@ const Icon = styled.div`
 
 const CountryWrapper = styled.div`
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   ${({ theme }) => theme.lg} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
   }
 `;
 
@@ -165,14 +167,14 @@ const ImageWrapper = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  max-height: 450px;
-  max-width: 700px;
+  max-height: 350px;
+  max-width: 650px;
   object-fit: cover;
 `;
 
 const Content = styled.div`
   flex-basis: 50%;
-  padding: 26px 20px;
+  padding: 26px 25px;
   color: ${({ theme }) => theme.text};
 `;
 
@@ -188,7 +190,7 @@ const Title = styled.h3`
 
 const DescriptionWrapper = styled.div`
   margin-bottom: 40px;
-  ${({ theme }) => theme.lg} {
+  ${({ theme }) => theme.md} {
     display: flex;
     margin-bottom: 10px;
   }

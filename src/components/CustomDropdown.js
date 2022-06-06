@@ -48,15 +48,18 @@ export default CustomDropdown;
 
 
 const DropdownContainer = styled.div`
-  margin-top: 30px;
-  width: 300px;
+  margin-top: 20px;
+  width: 250px;
+  ${({ theme }) => theme.lg} {
+    margin-top: 0;
+  }
 `;
 const DropdownHeader = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 17px 20px;
+  padding: 15px 15px;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   background-color: ${({ theme }) => theme.element};
@@ -92,6 +95,6 @@ const ListItem = styled.li`
   margin-bottom: 10px;
   cursor: pointer;
   &:hover {
-    color: #fd9e46;
+    color: ${({ theme }) => theme.input};
   }
 `;

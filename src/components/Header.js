@@ -47,7 +47,7 @@ const ContentWrapper = styled.div`
 const Title = styled.h1`
   font-size: 16px;
   color: ${({ theme }) => theme.text};
-  ${({ theme }) => theme.lg} {
+  ${({ theme }) => theme.sm} {
     font-size: 24px;
   }
 `;
@@ -74,7 +74,7 @@ const ButtonText = styled.h2`
    font-weight: 300;
    margin-left: 5px;
    color: ${({ theme }) => theme.text};
-   ${({ theme }) => theme.lg} {
+   ${({ theme }) => theme.sm} {
     font-size: 18px;
   }
 `;

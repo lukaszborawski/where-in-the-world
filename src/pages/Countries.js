@@ -60,6 +60,13 @@ const Wrapper = styled(motion.main)`
 
 const FiltersWrapper = styled.div`
   margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  ${({ theme }) => theme.lg} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const CountriesWrapper = styled.div`
