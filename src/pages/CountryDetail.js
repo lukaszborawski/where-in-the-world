@@ -24,7 +24,7 @@ const CountryDetail = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <BackButton to="/">
+      <BackButton to="/where-in-the-world">
         <Icon />
         Back
       </BackButton>
@@ -113,7 +113,7 @@ const CountryDetail = () => {
                     return border.alpha3Code === item;
                   });
                   return (
-                    <BorderButton to={`/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
+                    <BorderButton to={`/where-in-the-world/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
                   )
                 }
                 )}
