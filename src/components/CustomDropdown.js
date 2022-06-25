@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { CountriesContext } from '../providers/CountriesProvider'
 import styled from 'styled-components'
 import arrowDownIcon from '../assets/icons/arrow-down.svg'
@@ -9,12 +9,26 @@ const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Polar'];
 const CustomDropdown = () => {
 
   const { region, setRegion } = useContext(CountriesContext);
-
   const [isOpen, setIsOpen] = useState(false);
+  const buttonRef = useRef()
+
+  const handleOutsideClick = (e) => {
+    if (buttonRef.current && !buttonRef.current.contains(e.target)) {
+      setIsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick)
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
 
   return (
     <DropdownContainer>
-      <DropdownHeader onClick={() => setIsOpen(!isOpen)}>
+      <DropdownHeader ref={buttonRef} onClick={() => setIsOpen(!isOpen)}>
         <RegionName>{region || 'Filter by region'}</RegionName>
         <Icon />
       </DropdownHeader>
