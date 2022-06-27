@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { CountriesContext } from '../providers/CountriesProvider'
 import arrowBackIcon from '../assets/icons/arrow-back.svg'
 import { motion } from 'framer-motion'
-import ScrollToTop from '../hooks/useScrollToTop'
+import useScrollToTop from '../hooks/useScrollToTop'
 
 
 
@@ -13,6 +13,8 @@ const CountryDetail = () => {
   const { id } = useParams();
   const { countries } = useContext(CountriesContext);
 
+  useScrollToTop();
+
   let country = countries.find(item => {
     return item.alpha3Code === id;
   });
@@ -20,113 +22,110 @@ const CountryDetail = () => {
   const { name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, flag, borders } = country;
 
   return (
-    <>
-      <ScrollToTop />
-      <Wrapper
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <BackButton to="/where-in-the-world">
-          <Icon />
-          Back
-        </BackButton>
-        <CountryWrapper>
-          <ImageWrapper>
-            <Image src={flag} alt={name} />
-          </ImageWrapper>
-          <Content>
-            <Title>{name}</Title>
-            <DescriptionWrapper>
-              <InnerWrapper>
-                {nativeName && (
-                  <Detail>
-                    Native Name:
-                    <Value>
-                      {nativeName}
-                    </Value>
-                  </Detail>
+    <Wrapper
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <BackButton to="/where-in-the-world">
+        <Icon />
+        Back
+      </BackButton>
+      <CountryWrapper>
+        <ImageWrapper>
+          <Image src={flag} alt={name} />
+        </ImageWrapper>
+        <Content>
+          <Title>{name}</Title>
+          <DescriptionWrapper>
+            <InnerWrapper>
+              {nativeName && (
+                <Detail>
+                  Native Name:
+                  <Value>
+                    {nativeName}
+                  </Value>
+                </Detail>
+              )}
+              {population && (
+                <Detail>
+                  Population:
+                  <Value>
+                    {population.toLocaleString()}
+                  </Value>
+                </Detail>
+              )}
+              {region && (
+                <Detail>
+                  Region:
+                  <Value>
+                    {region}
+                  </Value>
+                </Detail>
+              )}
+              {subregion && (
+                <Detail>
+                  Sub Region:
+                  <Value>
+                    {subregion}
+                  </Value>
+                </Detail>
+              )}
+              {capital && (
+                <Detail>
+                  Capital:
+                  <Value>
+                    {capital}
+                  </Value>
+                </Detail>
+              )}
+            </InnerWrapper>
+            <InnerWrapper>
+              {topLevelDomain && (
+                <Detail>
+                  Top Level Domain:
+                  <Value>
+                    {topLevelDomain[0]}
+                  </Value>
+                </Detail>
+              )}
+              {currencies && (
+                <Detail>
+                  Currencies:
+                  <Value>
+                    {currencies[0].name}
+                  </Value>
+                </Detail>
+              )}
+              {languages && (
+                <Detail>
+                  Languages:
+                  <Value>
+                    {languages.map(lang => lang.name).join(', ')}
+                  </Value>
+                </Detail>
+              )}
+            </InnerWrapper>
+          </DescriptionWrapper>
+          {borders && (
+            <Detail>
+              Border Countries:
+              <Borders>
+                {borders.map((item) => {
+                  let bordersCountry = countries.find(border => {
+                    return border.alpha3Code === item;
+                  });
+                  return (
+                    <BorderButton to={`/where-in-the-world/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
+                  )
+                }
                 )}
-                {population && (
-                  <Detail>
-                    Population:
-                    <Value>
-                      {population.toLocaleString()}
-                    </Value>
-                  </Detail>
-                )}
-                {region && (
-                  <Detail>
-                    Region:
-                    <Value>
-                      {region}
-                    </Value>
-                  </Detail>
-                )}
-                {subregion && (
-                  <Detail>
-                    Sub Region:
-                    <Value>
-                      {subregion}
-                    </Value>
-                  </Detail>
-                )}
-                {capital && (
-                  <Detail>
-                    Capital:
-                    <Value>
-                      {capital}
-                    </Value>
-                  </Detail>
-                )}
-              </InnerWrapper>
-              <InnerWrapper>
-                {topLevelDomain && (
-                  <Detail>
-                    Top Level Domain:
-                    <Value>
-                      {topLevelDomain[0]}
-                    </Value>
-                  </Detail>
-                )}
-                {currencies && (
-                  <Detail>
-                    Currencies:
-                    <Value>
-                      {currencies[0].name}
-                    </Value>
-                  </Detail>
-                )}
-                {languages && (
-                  <Detail>
-                    Languages:
-                    <Value>
-                      {languages.map(lang => lang.name).join(', ')}
-                    </Value>
-                  </Detail>
-                )}
-              </InnerWrapper>
-            </DescriptionWrapper>
-            {borders && (
-              <Detail>
-                Border Countries:
-                <Borders>
-                  {borders.map((item) => {
-                    let bordersCountry = countries.find(border => {
-                      return border.alpha3Code === item;
-                    });
-                    return (
-                      <BorderButton to={`/where-in-the-world/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
-                    )
-                  }
-                  )}
-                </Borders>
-              </Detail>
-            )}
-          </Content>
-        </CountryWrapper>
-      </Wrapper>
-    </>
+              </Borders>
+            </Detail>
+          )}
+        </Content>
+      </CountryWrapper>
+    </Wrapper>
   )
 }
 
