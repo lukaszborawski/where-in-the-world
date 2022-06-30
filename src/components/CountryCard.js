@@ -37,13 +37,15 @@ const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.element};
   color: ${({ theme }) => theme.text};
   box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 `;
 
 const Image = styled.img`
   height: 190px;
   width: 100%;
   object-fit: cover;
-  object-position: center;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 `;
 
 const Content = styled.div`

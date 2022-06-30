@@ -21,9 +21,12 @@ const CountriesProvider = ({ children }) => {
   const handleSearchChange = (e) => {
     setCountry(e.target.value)
   }
+  const handleSearchClear = () => {
+    setCountry("")
+  }
 
   return (
-    <CountriesContext.Provider value={{ countries, isLoading, country, region, setRegion, handleSearchChange }}>
+    <CountriesContext.Provider value={{ countries, isLoading, country, region, setRegion, handleSearchChange, handleSearchClear }}>
       {children}
     </CountriesContext.Provider>
   )
