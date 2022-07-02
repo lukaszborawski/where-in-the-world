@@ -9,11 +9,11 @@ import CustomDropdown from '../components/CustomDropdown';
 
 const Countries = () => {
 
-  const { countries, country, region, isLoading } = useContext(CountriesContext);
+  const { countries, country, region, isLoading, errorMessage } = useContext(CountriesContext);
 
   const filtredCountries = countries
     .filter(countrySelect => countrySelect.region.includes(region))
-    .filter(countrySearch => countrySearch.name.toLowerCase().includes(country.toLowerCase()))
+    .filter(countrySearch => countrySearch.name.toLowerCase().includes(country.toLowerCase()));
 
   return (
     <Wrapper
@@ -26,21 +26,31 @@ const Countries = () => {
         <CustomDropdown />
       </FiltersWrapper>
       <CountriesWrapper>
-        {!isLoading ?
-          filtredCountries.map(
-            ({ name, flag, population, region, capital, alpha3Code }) => (
-              <Card
-                key={name}
-                flag={flag}
-                name={name}
-                population={population}
-                region={region}
-                capital={capital}
-                alpha3Code={alpha3Code}
-              />
+        {errorMessage !== "" ? (
+          <h2>Please try again later</h2>
+        ) : (
+          isLoading ? (
+            <Loader />
+          ) : (
+            filtredCountries.length === 0 ? (
+              <h2>No countries found</h2>
+            ) : (
+              filtredCountries.map(
+                ({ name, flag, population, region, capital, alpha3Code }) => (
+                  <Card
+                    key={name}
+                    flag={flag}
+                    name={name}
+                    population={population}
+                    region={region}
+                    capital={capital}
+                    alpha3Code={alpha3Code}
+                  />
+                )
+              )
             )
           )
-          : <Loader />
+        )
         }
       </CountriesWrapper>
     </Wrapper>

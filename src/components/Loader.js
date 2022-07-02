@@ -4,14 +4,12 @@ import { motion } from 'framer-motion';
 
 const Loader = () => {
   return (
-    <>
-      <Wrapper>
-        <CircleLoader
-          animate={{ rotate: [0, 180, 360], borderWidth: [8, 2, 8] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
-        ></CircleLoader>
-      </Wrapper>
-    </>
+        <Wrapper>
+          <CircleLoader
+            animate={{ rotate: [0, 180, 360], borderWidth: [8, 2, 8] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+          ></CircleLoader>
+        </Wrapper>
   )
 }
 

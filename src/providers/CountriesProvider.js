@@ -8,14 +8,21 @@ const CountriesProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
-    axios
-      .get('https://restcountries.com/v2/all')
-      .then(response => {
-        setCountries(response.data)
-      })
-      .finally(() => setIsLoading(false));
+    async function getCountries() {
+      try {
+        const response = await axios.get('https://restcountries.com/v2/all')
+        setCountries(response.data);
+        setErrorMessage('');
+      } catch (error) {
+        setErrorMessage(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getCountries();
   }, []);
 
   const handleSearchChange = (e) => {
@@ -26,7 +33,7 @@ const CountriesProvider = ({ children }) => {
   }
 
   return (
-    <CountriesContext.Provider value={{ countries, isLoading, country, region, setRegion, handleSearchChange, handleSearchClear }}>
+    <CountriesContext.Provider value={{ countries, isLoading, country, region, errorMessage, setRegion, handleSearchChange, handleSearchClear }}>
       {children}
     </CountriesContext.Provider>
   )
