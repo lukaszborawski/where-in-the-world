@@ -1,8 +1,8 @@
-import React, { useState, useContext, useRef } from 'react'
-import { CountriesContext } from '../providers/CountriesProvider'
-import styled from 'styled-components'
-import arrowDownIcon from '../assets/icons/arrow-down.svg'
-import useOutsideClick from '../hooks/useOutsideClick'
+import React, { useState, useContext, useRef } from 'react';
+import { CountriesContext } from '../providers/CountriesProvider';
+import styled from 'styled-components';
+import arrowDownIcon from '../assets/icons/arrow-down.svg';
+import useOutsideClick from '../hooks/useOutsideClick';
 
 
 const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Polar'];

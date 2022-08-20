@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import styled from 'styled-components'
-import { Link, useParams } from 'react-router-dom'
-import { CountriesContext } from '../providers/CountriesProvider'
-import arrowBackIcon from '../assets/icons/arrow-back.svg'
-import { motion } from 'framer-motion'
-import useScrollToTop from '../hooks/useScrollToTop'
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { Link, useParams } from 'react-router-dom';
+import { CountriesContext } from '../providers/CountriesProvider';
+import arrowBackIcon from '../assets/icons/arrow-back.svg';
+import { motion } from 'framer-motion';
+import useScrollToTop from '../hooks/useScrollToTop';
 
 
 
@@ -27,7 +27,7 @@ const CountryDetail = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <BackButton to="/where-in-the-world">
+      <BackButton to="/">
         <Icon />
         Back
       </BackButton>
@@ -116,7 +116,7 @@ const CountryDetail = () => {
                     return border.alpha3Code === item;
                   });
                   return (
-                    <BorderButton to={`/where-in-the-world/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
+                    <BorderButton to={`/country/${bordersCountry.alpha3Code}`} key={item} >{bordersCountry.name}</BorderButton>
                   )
                 }
                 )}

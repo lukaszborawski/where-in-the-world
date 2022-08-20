@@ -11,8 +11,8 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       <Routes location={location} key={location.pathname}>
-        <Route path='/where-in-the-world' element={<Countries />} />
-        <Route path='/where-in-the-world/country/:id' element={<CountryDetail />} />
+        <Route path='/' element={<Countries />} />
+        <Route path='/country/:id' element={<CountryDetail />} />
       </Routes>
     </AnimatePresence>
   )

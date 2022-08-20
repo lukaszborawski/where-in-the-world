@@ -12,9 +12,9 @@ function App() {
     <>
       <ThemeProvider>
         <GlobalStyle />
-        <Header />
         <CountriesProvider>
           <BrowserRouter>
+            <Header />
             <AnimatedRoutes />
           </BrowserRouter>
         </CountriesProvider>

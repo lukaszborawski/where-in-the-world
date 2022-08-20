@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import moonIcon from '../assets/icons/moon.svg';
 import { ThemeContext } from '../providers/ThemeProvider';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const { toggleTheme } = useContext(ThemeContext);
@@ -9,7 +10,9 @@ const Header = () => {
   return (
     <Wrapper>
       <ContentWrapper>
-        <Title>Where in the world?</Title>
+        <Link to={"/"}>
+          <Title>Where in the world?</Title>
+        </Link>
         <DarkModeButton onClick={toggleTheme}>
           <Icon />
           <ButtonText>Dark Mode</ButtonText>

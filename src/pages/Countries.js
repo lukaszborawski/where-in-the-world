@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { CountriesContext } from '../providers/CountriesProvider'
-import styled from 'styled-components'
+import React, { useContext } from 'react';
+import { CountriesContext } from '../providers/CountriesProvider';
+import styled from 'styled-components';
 import Card from '../components/CountryCard';
 import Loader from '../components/Loader';
 import { motion } from 'framer-motion';

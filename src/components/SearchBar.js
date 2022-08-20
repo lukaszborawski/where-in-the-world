@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { CountriesContext } from '../providers/CountriesProvider'
-import styled from 'styled-components'
-import searchIcon from '../assets/icons/search.svg'
-import cancelIcon from '../assets/icons/cancel.svg'
+import React, { useContext } from 'react';
+import { CountriesContext } from '../providers/CountriesProvider';
+import styled from 'styled-components';
+import searchIcon from '../assets/icons/search.svg';
+import cancelIcon from '../assets/icons/cancel.svg';
 
 const SearchBar = () => {
 
