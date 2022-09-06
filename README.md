@@ -1,6 +1,6 @@
 
 # Where in the world
-App that let's you search for different countries in the world and view information about them.
+App that lets you search for different countries in the world and view information about them.
 
 ![witw](https://user-images.githubusercontent.com/59935570/188242344-ae7c7ab8-c1da-4132-9b09-85ac103309d0.jpg)
 
@@ -25,6 +25,7 @@ Users are be able to:
 ## Used Technologies
 
 - React
+- React Router
 - Axios
 - Styled Components
 - Framer Motion
